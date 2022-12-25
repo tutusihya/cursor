@@ -1,0 +1,23 @@
+
+mov ah, 02h  
+mov bh, 00h 
+
+
+mov dx, 0   
+mov cx, 0   
+
+loop:
+  int 10h  
+  inc dx    
+  cmp dx, 80  
+  jne loop   
+  mov dx, 0   
+  inc cx    
+  cmp cx, 25  
+  jne loop   
+             
+  mov cx, 0   
+
+
+mov ah, 00h  
+int 21h
