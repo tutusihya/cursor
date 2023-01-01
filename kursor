@@ -1,23 +1,45 @@
 
-mov ah, 02h  
-mov bh, 00h 
 
+.model small
+.stack 100h
 
-mov dx, 0   
-mov cx, 0   
+.data
 
-loop:
-  int 10h  
-  inc dx    
-  cmp dx, 80  
-  jne loop   
-  mov dx, 0   
-  inc cx    
-  cmp cx, 25  
-  jne loop   
-             
-  mov cx, 0   
+.code
 
+mulai:
+    mov ah, 02h 
+    mov bh, 00h 
+    mov dh, 05h 
+    mov dl, 10h 
+    int 21h     
 
-mov ah, 00h  
-int 21h
+    mov ah, 00h 
+    mov al, 'A'  
+    int 21h     
+
+    mov ah, 06h 
+    mov al, 01h 
+    mov bh, 00h 
+    mov ch, 00h 
+    mov cl, 00h 
+    mov dh, 06h 
+    mov dl, 20h 
+    int 21h     
+
+    mov ah, 02h 
+    mov bh, 00h 
+    mov dh, 07h 
+    mov dl, 15h 
+    int 21h     
+
+    mov ah, 03h 
+    mov al, 'B'  
+    int 21h     
+
+    mov ah, 01h 
+    int 16h     
+
+    jmp mulai  
+
+end
